@@ -94,7 +94,7 @@ public class PubSubFunction implements CloudEventsFunction {
     }
 
     private static String generateVerificationLink(String email, String token) {
-        return "http://khatan.me.:8080/v1/user/verify?token=" + token + "&email=" + email;
+        return "https://khatan.me/v1/user/verify?token=" + token + "&email=" + email;
     }
 
 
