@@ -40,6 +40,8 @@ public class PubSubFunction implements CloudEventsFunction {
     private static final String DB_USER = System.getenv("DB_USER");
     private static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
 
+    private static final String apiKey = System.getenv("apiKey");
+
     @Override
     public void accept(CloudEvent event) throws UnirestException {
         String cloudEventData = new String(event.getData().toBytes());
@@ -78,7 +80,7 @@ public class PubSubFunction implements CloudEventsFunction {
 
 
         HttpResponse<JsonNode> request = Unirest.post("https://api.mailgun.net/v3/" + "khatan.me" + "/messages")
-                .basicAuth("api", "fcd7a9f21f752381cc2df2f46a2c790c-309b0ef4-b88916e7")
+                .basicAuth("api", apiKey)
                 .queryString("from", "Angry User <admin@khatan.me>")
                 .queryString("to", email)
                 .queryString("subject", "hello")
